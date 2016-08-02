@@ -6,7 +6,7 @@ public class VRInput : MonoBehaviour {
 
 
     public event Action OnClickEvent;
-    
+    public bool m_isGazeOnAnItem;
     // Use this for initialization
 	void Start () {
 	
@@ -14,14 +14,14 @@ public class VRInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if( Input.GetMouseButton( 0 ) )
+        if( Input.GetMouseButtonDown( 0 ) )
         {
             Click();
         }
 	}
     private void Click()
     {
-        if( OnClickEvent != null )
+        if( OnClickEvent != null && m_isGazeOnAnItem)
         {
             print( "click" );
             OnClickEvent();

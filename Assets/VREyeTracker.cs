@@ -24,7 +24,7 @@ public class VREyeTracker : MonoBehaviour {
         if(Physics.Raycast(eyeTracker, out m_hit, 30, m_layerMask ) )
         {
             VRInteractiveItem item = m_hit.collider.GetComponent<VRInteractiveItem>();
-            
+            m_vrInput.m_isGazeOnAnItem = true;
             m_currentInteractiveItem = item;
 
             if(item && item != m_lastInteractiveItem )
@@ -41,6 +41,7 @@ public class VREyeTracker : MonoBehaviour {
         }else
         {
             DesactivateLastItem();
+            m_vrInput.m_isGazeOnAnItem = false;
             m_currentInteractiveItem = null;
         }
 	}
